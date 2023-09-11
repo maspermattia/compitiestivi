@@ -8,8 +8,6 @@ public class Main {
         circolo.caricaSociDaFile("soci.txt");
 
         circolo.visualizzaSoci();
-
-        // Esempi di utilizzo delle funzionalità
         circolo.aggiungiSocio(new Socio("Mario", "Rossi", 35, 'M'));
         circolo.modificaSocio(0, new Socio("Luigi", "Bianchi", 40, 'M'));
         circolo.rimuoviSocio(1);
@@ -27,4 +25,3 @@ public class Main {
         circolo.esportaSociSuFile("soci_modificati.txt");
     }
 }
-

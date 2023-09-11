@@ -12,8 +12,6 @@ class Socio {
         this.eta = eta;
         this.sesso = sesso;
     }
-
-    // Getter e Setter
     public String getNome() {
         return nome;
     }
@@ -38,8 +36,6 @@ class Socio {
     public void setSesso(char sesso) {
         this.sesso = sesso;
     }
-
-    //toString
     @Override
     public String toString() {
         return nome + " " + cognome + " (età: " + eta + ", sesso: " + sesso + ")";

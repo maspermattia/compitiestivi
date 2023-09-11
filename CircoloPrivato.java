@@ -3,9 +3,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 class CircoloPrivato {
     private LinkedList<Socio> soci = new LinkedList<>();
-
-    // Caricamento dei soci da un file
-    public void caricaSociDaFile(String nomeFile) {
+public void caricaSociDaFile(String nomeFile) {
         try (BufferedReader br = new BufferedReader(new FileReader(nomeFile))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -23,35 +21,25 @@ class CircoloPrivato {
             e.printStackTrace();
         }
     }
-
-    // Aggiunta di un socio
-    public void aggiungiSocio(Socio socio) {
+public void aggiungiSocio(Socio socio) {
         soci.add(socio);
     }
-
-    // Modifica di un socio
-    public void modificaSocio(int index, Socio nuovoSocio) {
+public void modificaSocio(int index, Socio nuovoSocio) {
         if (index >= 0 && index < soci.size()) {
             soci.set(index, nuovoSocio);
         }
     }
-
-    // Rimozione di un socio
-    public void rimuoviSocio(int index) {
+public void rimuoviSocio(int index) {
         if (index >= 0 && index < soci.size()) {
             soci.remove(index);
         }
     }
-
-    // Incremento dell'età di tutti i soci
-    public void incrementaEtaDiTutti(int anni) {
+public void incrementaEtaDiTutti(int anni) {
         for (Socio socio : soci) {
             socio.setEta(socio.getEta() + anni);
         }
     }
-
-    // Calcolo dell'età media dei soci
-    public double calcolaEtaMedia() {
+public double calcolaEtaMedia() {
         if (soci.isEmpty()) {
             return 0;
         }
@@ -59,9 +47,7 @@ class CircoloPrivato {
         int sumEta = soci.stream().mapToInt(Socio::getEta).sum();
         return (double) sumEta / soci.size();
     }
-
-    // Calcolo dell'età media dei soci di sesso maschile
-    public double calcolaEtaMediaMaschile() {
+ public double calcolaEtaMediaMaschile() {
         List<Socio> maschi = soci.stream().filter(socio -> socio.getSesso() == 'M').collect(Collectors.toList());
         if (maschi.isEmpty()) {
             return 0;
@@ -70,9 +56,7 @@ class CircoloPrivato {
         int sumEtaMaschile = maschi.stream().mapToInt(Socio::getEta).sum();
         return (double) sumEtaMaschile / maschi.size();
     }
-
-    // Calcolo dell'età media dei soci di sesso femminile
-    public double calcolaEtaMediaFemminile() {
+public double calcolaEtaMediaFemminile() {
         List<Socio> femmine = soci.stream().filter(socio -> socio.getSesso() == 'F').collect(Collectors.toList());
         if (femmine.isEmpty()) {
             return 0;
@@ -81,9 +65,7 @@ class CircoloPrivato {
         int sumEtaFemminile = femmine.stream().mapToInt(Socio::getEta).sum();
         return (double) sumEtaFemminile / femmine.size();
     }
-
-    // Calcolo della distribuzione percentuale dei soci in base al sesso
-    public Map<Character, Double> calcolaDistribuzioneSesso() {
+ public Map<Character, Double> calcolaDistribuzioneSesso() {
         Map<Character, Double> distribuzione = new HashMap<>();
         long totale = soci.size();
 
@@ -96,9 +78,7 @@ class CircoloPrivato {
 
         return distribuzione;
     }
-
-    // Esportazione su file dei soci registrati
-    public void esportaSociSuFile(String nomeFile) {
+public void esportaSociSuFile(String nomeFile) {
         try (PrintWriter writer = new PrintWriter(nomeFile)) {
             for (Socio socio : soci) {
                 writer.println(socio.getNome() + "," + socio.getCognome() + "," + socio.getEta() + "," + socio.getSesso());
@@ -107,12 +87,9 @@ class CircoloPrivato {
             e.printStackTrace();
         }
     }
-
-    public LinkedList<Socio> getSoci() {
+ public LinkedList<Socio> getSoci() {
         return soci;
     }
-
-    // Visualizza la lista dei soci
     public void visualizzaSoci() {
         for (int i = 0; i < soci.size(); i++) {
             System.out.println((i + 1) + ". " + soci.get(i));
